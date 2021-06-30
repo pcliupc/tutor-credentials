@@ -1,0 +1,2 @@
+CREDENTIALS_INTERNAL_SERVICE_URL = "http://credentials:8000/api/v2"
+CREDENTIALS_PUBLIC_SERVICE_URL = "{% if ENABLE_HTTPS %}https{% else %}http{% endif %}://{{ CREDENTIALS_HOST }}/api/v2"

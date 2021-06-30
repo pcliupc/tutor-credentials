@@ -1,0 +1,4 @@
+# Credentials
+{{ CREDENTIALS_HOST }}{% if not ENABLE_HTTPS %}:80{% endif %} {
+    reverse_proxy nginx:80
+}

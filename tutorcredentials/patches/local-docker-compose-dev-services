@@ -1,0 +1,10 @@
+credentials:
+    environment:
+      DJANGO_SETTINGS_MODULE: credentials.settings.tutor.development
+    command: ./manage.py runserver 0.0.0.0:8150
+    ports:
+        - "8150:8150"
+    networks:
+    default:
+      aliases:
+        - "{{ CREDENTIALS_HOST }}"

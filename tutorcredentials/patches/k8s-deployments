@@ -1,0 +1,32 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: credentials
+  labels:
+    app.kubernetes.io/name: credentials
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: credentials
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: credentials
+    spec:
+      containers:
+        - name: credentials
+          image: {{ CREDENTIALS_DOCKER_IMAGE }}
+          ports:
+            - containerPort: 8000
+          env:
+            - name: DJANGO_SETTINGS_MODULE
+              value: credentials.settings.production
+          volumeMounts:
+            - mountPath: /openedx/credentials/credentials/settings/production.py
+              name: settings
+              subPath: production.py
+      volumes:
+        - name: settings
+          configMap:
+            name: credentials-settings

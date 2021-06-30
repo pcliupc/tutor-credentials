@@ -1,0 +1,1 @@
+- ../../data/credentials:/var/www/credentials:ro
